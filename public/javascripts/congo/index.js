@@ -1,10 +1,16 @@
 var Congo = {
   init: function() {
-    var crumbView = new Congo.BreadcrumbView({el: "#breadcrumbs"});
-    crumbView.render();
+    //data:
+    Congo.databases = new Congo.DatabaseCollection();
 
-    var dbs = new Congo.Databases();
-    var dbListView = new Congo.DatabaseListView({collection: dbs});
-    dbs.fetch();
+    //views:
+    Congo.breadcrumbs = new Congo.BreadcrumbView({el: "#breadcrumbs"});
+    Congo.databaseList = new Congo.DatabaseListView({collection: Congo.databases});
+
+    //start the app:
+    Congo.start();
+  }, 
+  start: function() {
+    Congo.databases.fetch();
   }
 }
