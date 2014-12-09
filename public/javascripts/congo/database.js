@@ -7,6 +7,18 @@ Congo.DatabaseCollection = Backbone.Collection.extend({
   url: '/mongo-api/dbs', 
 });
 
+Congo.DatabaseOptionView = Backbone.View.extend({
+  initialize: function() {
+    this.render();
+  },
+  render: function() {
+    var template = $("#database-option-template").html();
+    var renderedTemplate = _.template(template, {});
+    this.$el.html(renderedTemplate);
+    return this;
+  }
+});
+
 Congo.DatabaseView = Backbone.View.extend({
   tagName: 'tr',
   events: {
@@ -32,11 +44,15 @@ Congo.DatabaseListView = Backbone.View.extend({
     this.collection.bind("reset", this.render, this);
     this.collection.bind("add", this.render, this);
     this.collection.bind("remove", this.render, this);
+    this.renderOptionView();
   },
   tagName: 'table',
   className: 'table table-striped',
   events: {
     'change': 'render'
+  },
+  renderOptionView: function() {
+    Congo.optionView = new Congo.DatabaseOptionView({el: "#db-options"});
   },
   render: function() {
     var els = [];

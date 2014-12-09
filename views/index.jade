@@ -3,15 +3,18 @@
 .row
   #database-list.span9
   #db-options.span3
-    form#addDb
-      input(id="newDb", type="text")
-      button.btn(type="submit")
-        i.icon.icon-plus-sign
-        |  Add Db
+    
 
 script(src="/javascripts/congo/index.js")
 script(src="/javascripts/congo/nav.js")
 script(src="/javascripts/congo/database.js")
+
+script#database-option-template(type="text/template")
+  form#addDb
+      input(id="newDb", type="text")
+      button.btn(type="submit")
+        i.icon.icon-plus-sign
+        |  Add Db
 
 script#database-list-template(type="text/template")
   td(width=60)
