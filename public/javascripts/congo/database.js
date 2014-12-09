@@ -4,7 +4,7 @@ Congo.Database = Backbone.Model.extend({
 
 Congo.Databases = Backbone.Collection.extend({
   model: Congo.Database,
-  url: '/mongo-api/dbs'
+  url: '/mongo-api/dbs', 
 });
 
 Congo.DatabaseView = Backbone.View.extend({
@@ -21,7 +21,7 @@ Congo.DatabaseView = Backbone.View.extend({
   },
   render: function() {
     var template = $("#database-list-template").html();
-    var renderedTemplate = _.template(template, {name: 'Templated Name'});
+    var renderedTemplate = _.template(template, this.model.toJSON());
     this.$el.html(renderedTemplate);
     return this;
   }
@@ -30,15 +30,17 @@ Congo.DatabaseView = Backbone.View.extend({
 Congo.DatabaseListView = Backbone.View.extend({
   tagName: 'table',
   className: 'table table-striped',
+  events: {
+    'change': 'render'
+  },
   render: function() {
     var els = [];
-    for (var i = 0; i < 5; i++) {
-      var itemView = new Congo.DatabaseView();
-      // $(this.el).append(itemView.render().el);
+    this.collection.each(function(item) {
+      var itemView = new Congo.DatabaseView({model: item});
       els.push(itemView.render().el);
-    }
-    // return this;
+    });
     this.$el.html(els);
     $("#database-list").append(this.el);
+    return this;
   }
 });
