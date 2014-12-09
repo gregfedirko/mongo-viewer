@@ -1,13 +1,28 @@
+Congo.Database = Backbone.Model.extend({
+
+});
+
+Congo.Databases = Backbone.Collection.extend({
+  model: Congo.Database,
+  url: '/mongo-api/dbs'
+});
+
 Congo.DatabaseView = Backbone.View.extend({
   tagName: 'tr',
   events: {
-    "click a": "sayHello"
+    "click a": "sayHello",
+    "click button": "buttonClick"
   },
   sayHello: function() {
     console.log("Hello");
   },
+  buttonClick: function() {
+    alert("Button Clicked");
+  },
   render: function() {
-    $(this.el).html('<td><a href="#">DB NAME</a></td>');
+    var template = $("#database-list-template").html();
+    var renderedTemplate = _.template(template, {name: 'Templated Name'});
+    this.$el.html(renderedTemplate);
     return this;
   }
 });

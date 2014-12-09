@@ -2,9 +2,18 @@
   #breadcrumbs.span12
 .row
   #database-list.span12
+
 script(src="/javascripts/congo/index.js")
 script(src="/javascripts/congo/nav.js")
 script(src="/javascripts/congo/database.js")
+
+script#database-list-template(type="text/template")
+  <td>
+  <a href="#"><%=name%></a>
+  </td>
+  <td>
+  <button class="btn btn-primary">Click Me</button>
+  </td>
 
 script
   $(function() {
