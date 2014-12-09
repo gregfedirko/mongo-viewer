@@ -35,14 +35,13 @@ Congo.DatabaseOptionView = Backbone.View.extend({
 Congo.DatabaseView = Backbone.View.extend({
   tagName: 'tr',
   events: {
-    "click a": "sayHello",
-    "click button": "buttonClick"
+    "click button": "removeDb"
   },
-  sayHello: function() {
-    console.log("Hello");
-  },
-  buttonClick: function() {
-    alert("Button Clicked");
+  removeDb: function() {
+    if(confirm("Are you sure you want to destroy this database?")) {
+      this.model.destroy;
+      Congo.databases.remove(this.model);
+    }
   },
   render: function() {
     var template = $("#database-list-template").html();
