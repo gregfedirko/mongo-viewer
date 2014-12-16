@@ -15,7 +15,8 @@ var Congo = {
     //the App layout:
     Congo.appLayout = new Congo.AppLayout({
       el: "#app",
-      detailRegion: "#details"
+      detailRegion: "#details", 
+      navigatorView: Congo.breadcrumbs
     });
 
   }, 

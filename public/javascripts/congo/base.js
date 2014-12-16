@@ -44,6 +44,8 @@ Congo.ListView = Backbone.View.extend({
 
 Congo.Layout = Backbone.View.extend({
   render: function() {
+    // empty the $el
+    this.$el.empty();
     // add the details template to the DOM
     var templateSource = $(this.template).html();
     this.$el.append(_.template(templateSource));
@@ -70,9 +72,7 @@ Congo.Layout = Backbone.View.extend({
 });
 
 Congo.AppLayout = Backbone.View.extend({
-  renderNavigator: function() {
 
-  }, 
   renderDetails: function(detailView) {
     // pass the region in on init...
     this.$(this.options.detailRegion).empty();
