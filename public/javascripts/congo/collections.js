@@ -1,6 +1,6 @@
 Congo.MongoCollection = Backbone.Model.extend({
   url: function() {
-    return '/mongo/api/' + Congo.currentDatabase + '/' + this.id;
+    return '/mongo-api/' + Congo.currentDatabase + '/' + this.id;
   }, 
   idAttribute: 'name'
 });
@@ -9,7 +9,7 @@ Congo.MongoCollections = Backbone.Collection.extend({
   model: Congo.MongoCollection,
   url: function() {
     var url = "/mongo-api/" + Congo.currentDatabase;
-    console.log(url);
+    console.log("mongocollections++++", url);
     return url;
   }
 });
@@ -55,7 +55,7 @@ Congo.CollectionLayoutView = Congo.Layout.extend({
   template: "#collection-details-template",
   regions: {
     collectionList: "#collection-list",
-    collectionOptions: "#colelction-options"
+    collectionOptions: "#collection-options"
   },
   layoutReady: function() {
     var collectionListView = new Congo.CollectionListView({collection: this.collection});

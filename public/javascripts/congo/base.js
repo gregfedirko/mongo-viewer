@@ -69,3 +69,21 @@ Congo.Layout = Backbone.View.extend({
   }
 });
 
+Congo.AppLayout = Backbone.View.extend({
+  renderNavigator: function() {
+
+  }, 
+  renderDetails: function(detailView) {
+    // pass the region in on init...
+    this.$(this.options.detailRegion).empty();
+    console.log("799999999")
+    detailView.render();
+    this.$(this.options.detailRegion).append(detailView.el);
+  }
+});
+
+
+
+
+
+

@@ -17,7 +17,7 @@ Congo.DatabaseOptionView = Congo.View.extend({
   events: {
     "submit form": "addDb"
   },
-  template: "#database-option-template",
+  template: "#new-db-template",
   addDb: function(event) {
     event.preventDefault();
     var newDbName = $("#newDb").val();
@@ -37,7 +37,8 @@ Congo.DatabaseView = Congo.ItemView.extend({
   showDb: function(event) {
     event.preventDefault();
     var db = $(event.currentTarget).data("db");
-    console.log(db);
+
+    Congo.router.navigate(db, true);
   }
 });
 

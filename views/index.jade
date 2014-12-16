@@ -10,32 +10,55 @@ script(src="/javascripts/congo/nav.js")
 script(src="/javascripts/congo/database.js")
 script(src="/javascripts/congo/collections.js")
 
+script#collection-details-template(type="text/template")
+  .row
+    .span12
+      #collection-list.span8
+      #collection-options.span3
+
 script#db-details-template(type="text/template")
   .row
     .span12
       #database-list.span8
       #database-options.span3
 
-script#database-option-template(type="text/template")
+script#new-db-template(type="text/template")
   form#addDb
       input#newDb(id="newDb", type="text")
       button.btn(type="submit")
         i.icon.icon-plus-sign
         |  Add Db
 
+script#new-collection-template(type="text/template")
+  form#addCollection
+      input#newCollection(id="newCollection", type="text")
+      button.btn(type="submit")
+        i.icon.icon-plus-sign
+        |  Add Collection
+
 script#database-list-template(type="text/template")
   td(width=60)
     img(src="/img/collections.png", style="height: 24px")
   td
     h4
-      a(href="#")<%=name%>
+      a(href="#", data-db!='<%=name%>')<%=name%>
   td
     button.btn.delete-collection
       i.icon.icon-remove
       |  delete
 
+script#collection-list-template(type="text/template")
+    td(width=60)
+      img(src="/img/collections.png", style="height:24px")
+    td
+      h4
+        a(href="#", data-collection!='<%=name%>') <%=name%>
+    td
+      button.btn
+        i.icon.icon-remove
+        | delete
 script
   $(function() {
-    Congo.init();  
+    Congo.start();  
   });
   
