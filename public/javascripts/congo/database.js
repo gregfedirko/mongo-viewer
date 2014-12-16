@@ -39,7 +39,7 @@ Congo.DatabaseView = Backbone.View.extend({
   },
   removeDb: function() {
     if(confirm("Are you sure you want to destroy this database?")) {
-      this.model.destroy;
+      this.model.destroy();
       Congo.databases.remove(this.model);
     }
   },
