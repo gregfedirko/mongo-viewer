@@ -27,17 +27,17 @@ Congo.DatabaseOptionView = Congo.View.extend({
   }
 });
 
-Congo.DatabaseView = Congo.View.extend({
+Congo.DatabaseView = Congo.ItemView.extend({
   tagName: 'tr',
   template: "#database-list-template",
   events: {
-    "click button": "removeDb"
+    "click button": "remove",
+    "click a": "showDb"
   },
-  removeDb: function() {
-    if(confirm("Are you sure you want to destroy this database?")) {
-      this.model.destroy();
-      Congo.databases.remove(this.model);
-    }
+  showDb: function(event) {
+    event.preventDefault();
+    var db = $(event.currentTarget).data("db");
+    console.log(db);
   }
 });
 
@@ -58,7 +58,7 @@ Congo.DatabaseLayoutView = Congo.Layout.extend({
     var optionView = new Congo.DatabaseOptionView({});
 
     this.databaseList.append(dbListView.render().el);
-    this.databaseOptions.append(optionView.render().el);
+    this.databaseOptions.append(optionView.render().el)
   }
 });
 
