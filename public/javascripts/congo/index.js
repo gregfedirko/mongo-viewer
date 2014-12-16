@@ -5,12 +5,19 @@ var Congo = {
 
     //views:
     Congo.breadcrumbs = new Congo.BreadcrumbView({el: "#nav"});
-    Congo.details = new Congo.DetailsView({el: "#details"});
+
 
     //start the app:
     Congo.start();
   }, 
-  start: function() {
+  showDatabases: function() {
+    var dbLayout = new Congo.DatabaseLayoutView({collection: this.databases});
+    dbLayout.render();
+
+    $("#details").append(dbLayout.el);
     Congo.databases.fetch();
+  },
+  start: function() {
+    Congo.showDatabases();
   }
 }
